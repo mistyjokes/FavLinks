@@ -3,34 +3,46 @@ import React, {Component} from 'react';
 class Form extends Component {
     constructor(props) {
         super(props);
-        
-        /*
-            TODO - set initial state for link name and URL 
-
-        */
+        this.state = {
+            Name: "",
+            URL: ""
+        };
     }
 
-    handleChange = event => {
-        /*
-            TODO - Logic for changing state based on form changes
-        */
+    handleNameChange = event => {
+        this.setState({ 
+            Name: event.target.value,
+            });  
+    }
+
+    handleURLChange = event => {
+        this.setState({ 
+            URL: event.target.value,
+            });  
     }
 
     onFormSubmit = (event) => {
         // to prevent page reload on form submit
         event.preventDefault();
-        
-        /*
-            TODO - Logic for calling props to handle submission and setting state changes
-        */
+        this.props.handleSubmit(this.state);
 
+        this.setState({  
+            Name: "",
+            URL: ""
+        });
     }
 
     render() {
 
         return(
-            <form>
-                {/* TODO - Logic for returning a form element with labels and inputs for link name and URL */}
+            <form onSubmit={this.onFormSubmit}>
+                <label>Name:</label>
+                <input type="text" onChange= {this.handleNameChange} value={this.state.Name} ></input>
+
+                <label >URL:</label>
+                <input type="text" onChange={this.handleURLChange} value={this.state.URL}></input>
+
+                <button onClick= {this.onFormSubmit}>Submit</button> 
             </form>
         )
     
