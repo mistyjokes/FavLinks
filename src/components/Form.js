@@ -33,16 +33,19 @@ class Form extends Component {
     }
 
     render() {
-
+        
         return(
             <form onSubmit={this.onFormSubmit}>
                 <label>Name:</label>
                 <input type="text" onChange= {this.handleNameChange} value={this.state.Name} ></input>
 
                 <label >URL:</label>
-                <input type="text" onChange={this.handleURLChange} value={this.state.URL}></input>
+                <input type="text" onChange={this.handleURLChange} value= {this.state.URL} ></input>
+                
+                
 
                 <button onClick= {this.onFormSubmit}>Submit</button> 
+                
             </form>
         )
     

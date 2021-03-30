@@ -1,4 +1,5 @@
 import React from 'react';
+import Linkify from 'react-linkify';
 
 
 const TableHeader = () => { 
@@ -18,10 +19,13 @@ const TableBody = props => {
     // boilerplate table body functional component 
     // we use Array.map to create table rows from LinkData passed via props
     const rows = props.linkData.map((row, index) => {
+
+        let link = <Linkify target= '_blank'> {row.URL} </Linkify>;
+        
         return (
             <tr key={index}>
                 <td>{row.Name}</td>
-                <td><a href={row.URL}>{row.URL}</a></td>
+                <td><a href={row.URL}>{link}</a></td>
                 <td><button onClick={() => props.removeLink(index)}>Delete</button></td>
             </tr>
         );
